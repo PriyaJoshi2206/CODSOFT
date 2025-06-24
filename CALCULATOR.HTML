@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculator</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #ebe1e1;
+      font-family: Arial, sans-serif;
+    }
+    .calculator {
+      background: #281b89;
+      padding: 60px;
+      border-radius: 55px;
+      box-shadow: 0 10px 20px rgba(154, 40, 97, 0.2);
+    }
+    .display {
+      width: 91%;
+      height: 50px;
+      background: #c1d9ea;
+      color: rgb(11, 11, 11);
+      text-align: right;
+      padding: 10px;
+      font-size: 4em;
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 60px);
+      grid-gap: 15px;
+      justify-content: center;
+    }
+    button {
+      height: 50px;
+      width: 50px;
+      font-size: 1.5em;
+      background: #8ad5db;
+      color: rgb(8, 7, 7);
+      border: 6cm;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #b3246c;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <div class="display" id="display">0</div>
+    <div class="buttons">
+      <button onclick="press('*')">*</button>
+      <button onclick="press('7')">7</button>
+      <button onclick="press('9')">9</button>
+      <button onclick="press('8')">8</button>
+      <button onclick="press('+')">+</button>
+      <button onclick="press('4')">4</button>
+      <button onclick="press('5')">5</button>
+      <button onclick="press('6')">6</button>
+      <button onclick="press('-')">-</button>
+      <button onclick="press('1')">1</button>
+      <button onclick="press('2')">2</button>
+      <button onclick="press('3')">3</button>
+      <button onclick="press('00')">00</button> 
+      <button onclick="press('0')">0</button>
+      <button onclick="press('.')">.</button>
+     <button onclick="calculate()">=</button>
+    </div>
+  </div>
+
+  <script>
+    let expression = '';
+
+    function press(value) {
+      if (expression === '0') expression = '';
+      expression += value;
+      document.getElementById('display').textContent = expression;
+    }
+
+    function calculate() {
+      try {
+        expression = eval(expression).toString();
+        document.getElementById('display').textContent = expression;
+      } catch {
+        document.getElementById('display').textContent = 'Error';
+        expression = '';
+      }
+    }
+  </script>
+</body>
+</html>
